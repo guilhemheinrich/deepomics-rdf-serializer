@@ -1,0 +1,26 @@
+
+# Allow Prefixe in prefixable fields
+Prefixes:
+  - key: deepomics
+    value: http://opendata.inrae.fr
+  - key: rdfs
+    value: http://www.w3.org/2000/01/rdf-schema#
+
+Generic:
+  # Property
+  resource_identifier: 
+   php_property: id
+   prefix: "deepomics:" # prefixable
+
+  annotation_properties:
+   - php_property: slug
+     rdf_property: rdfs:label # prefixable
+
+Specific:
+  - key: Project
+    annotation_properties:
+     - php_property: summary
+       rdf_property: rdfs:comments # prefixable
+    object_properties:
+     - php_property: coordinator
+       rdf_property: deepomics:hasCoordinator # prefixable

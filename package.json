@@ -1,0 +1,28 @@
+{
+  "name": "deepomicsrdf---ts",
+  "version": "1.0.0",
+  "description": "Un fonctionalité de sérialisation rdf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rdf",
+    "semantics",
+    "serialisation"
+  ],
+  "author": "Guilhem HEINRICH",
+  "license": "ISC",
+  "devDependencies": {
+    "@rdfjs/types": "^1.1.0",
+    "@types/fs-extra": "^11.0.1"
+  },
+  "dependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.1",
+    "js-yaml": "^4.1.0",
+    "rdf-js": "^4.0.2",
+    "rdf-parse": "^2.3.2"
+  }
+}
