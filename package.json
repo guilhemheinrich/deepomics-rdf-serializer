@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "@types/js-yaml": "^4.0.5",
+    "@types/n3": "^1.10.4",
     "dotenv": "^16.0.3",
     "fs-extra": "^11.1.1",
     "js-yaml": "^4.1.0",
+    "n3": "^1.16.4",
     "rdf-js": "^4.0.2",
     "rdf-parse": "^2.3.2"
   }
