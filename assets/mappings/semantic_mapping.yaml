@@ -12,13 +12,13 @@ Generic:
    php_property: id
    prefix: "deepomics:" # prefixable
 
-  annotation_properties:
+  data_properties:
    - php_property: slug
      rdf_property: rdfs:label # prefixable
 
 Specific:
   - key: Project
-    annotation_properties:
+    data_properties:
      - php_property: summary
        rdf_property: rdfs:comments # prefixable
     object_properties:

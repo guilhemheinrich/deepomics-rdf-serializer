@@ -5,7 +5,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import { walker_recursive_sync } from '../Helper/walker'
 import { ReadStream, WriteStream } from "fs";
-import multiple_file_stream from './multiple_file_reader'   
+import multiple_file_stream from '../ontology-mapper/multiple_file_reader'   
 
 
 dotenv.config()
