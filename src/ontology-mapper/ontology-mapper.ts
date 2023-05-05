@@ -60,17 +60,17 @@ export default class RDFserializer_service {
             allParse.push(stream.finished(parseStream))
         }
         await Promise.all(allParse)
-        .then((values) => {
+            .then((values) => {
 
-        })
-        .catch((err) => console.log(err))
+            })
+            .catch((err) => console.log(err))
 
         console.log("end of ontologie initialization")
     }
 
     writeMappings() {
         const mappings = this.mapping_templater()
-        fs.writeFileSync(<string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY], yaml.dump({Specific: mappings}), { encoding: "utf-8" })
+        fs.writeFileSync(<string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY], yaml.dump({ Specific: mappings }), { encoding: "utf-8" })
     }
 
     shortener(uri: string) {
@@ -93,6 +93,13 @@ export default class RDFserializer_service {
         }
     }
 
+    shortener_property(uri: string) {
+        const shorten_pass = this.shortener(uri)
+        if (shorten_pass.startsWith("has")) {
+            
+        }
+    }
+
     mapping_templater() {
         const mappings: Optional_Class_Mapping_constructorI[] = []
         // Iterate over all concept
@@ -102,16 +109,31 @@ export default class RDFserializer_service {
             return resource.isAbstract && resource.class_uri == this.RDF_handler.expender("owl:Restriction")
         })
         for (let concept of concepts) {
+            console.log("concept.name")
+            console.log(concept.name)
             let entry: Class_Mapping_constructorI = {
                 key: this.shortener(concept.class_uri),
                 data_properties: [],
                 object_properties: []
-
             };
             (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
                 value: concept.class_uri,
                 rdf_property: 'rdf:Class'
             })
+            // Iterate over properties
+            for (let property_uri of concept.properties) {
+                const property = this.RDF_handler.gql_resources_preprocesing[property_uri]
+                console.log("property.name")
+                console.log(property.name)
+                console.log(property)
+                // Skip the property if it is an annotation property
+                if (this.RDF_handler.isAnnotationProperty(property)) continue
+                (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
+                    php_property: concept.class_uri,
+                    rdf_property: this.RDF_handler.prefixer(property.class_uri)
+                })
+
+            }
             mappings.push(entry)
         }
         return mappings

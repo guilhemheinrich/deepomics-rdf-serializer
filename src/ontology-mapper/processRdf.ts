@@ -181,13 +181,37 @@ export class Gql_Generator {
         let inherited_values: Array<Gql_Resource[typeof key]> = []
 
         const looper = (uri: string) => {
-            let inheritance = this.gql_resources_preprocesing[uri].inherits
+            const inheritance = this.gql_resources_preprocesing[uri].inherits
             inherited_values.push(this.gql_resources_preprocesing[uri][key])
             inheritance.forEach((uri_next) => looper(uri_next))
         }
 
         looper(uri)
         return inherited_values
+    }
+
+    isAnnotationProperty(resource: Gql_Resource) {
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
+        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
+            return [...property_inheritance_mail, ...current_inheritance_chain]
+        })
+        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:AnnotationProperty"))
+    }
+
+    isObjectProperty(resource: Gql_Resource) {
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
+        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
+            return [...property_inheritance_mail, ...current_inheritance_chain]
+        })
+        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:ObjectProperty"))
+    }
+
+    isDatatypeProperty(resource: Gql_Resource) {
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
+        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
+            return [...property_inheritance_mail, ...current_inheritance_chain]
+        })
+        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:DatatypeProperty"))
     }
 
     processRdf(quad: Quad) {
@@ -236,7 +260,7 @@ export class Gql_Generator {
                 this.gql_resources_preprocesing[subject].inherits.push(object)
                 break
             case "rdfs:label":
-                // Handle __type of the class, or something else...
+                // TODO Handle __type of the class, or something else...
                 this.gql_resources_preprocesing[subject].name = object
                 break
             case "rdfs:comment":

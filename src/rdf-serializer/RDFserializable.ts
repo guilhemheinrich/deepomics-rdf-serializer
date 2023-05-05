@@ -9,14 +9,22 @@ export default class RDFserializable {
 
     }
 
+    static isRDFserializable(item: any): item is RDFserializable {
+        return item instanceof RDFserializable
+    }
 
+    getResourceIdentifier() {
+        const rdf_mapper = RDFserializer_service.getInstance()
+        const class_mapping = rdf_mapper.getClassMappings(this.constructor.name)
+        return class_mapping.resource_identifier.prefix + this[class_mapping.resource_identifier.php_property as keyof this]
+    }
     // TODO Factoriser
     templateRDF() {
         const rdf_mapper = RDFserializer_service.getInstance()
         const class_mapping = rdf_mapper.getClassMappings(this.constructor.name)
         const data_factory = new DataFactory()
         const RDF_serialization: Quad[] = []
-        const resource_identifier = class_mapping.resource_identifier.prefix + this[class_mapping.resource_identifier.php_property as keyof this]
+        const resource_identifier = this.getResourceIdentifier()
 
         // Static mapping
         const static_data_properties = class_mapping.data_properties.filter(isStaticProperty)
@@ -53,15 +61,20 @@ export default class RDFserializable {
                 RDF_serialization.push(quad)
             }
             // Dynamic object properties
-            // TODO Récupérer le Resource Identifier de l'objet (et check)
             const matching_object_property = dynamic_object_properties.find((data_property) => data_property.php_property == property_name)
             if (matching_object_property !== undefined && this[matching_object_property.php_property as keyof this] !== undefined) {
-                const quad = data_factory.quad(
-                    data_factory.namedNode(resource_identifier),
-                    data_factory.namedNode(matching_object_property.rdf_property),
-                    data_factory.namedNode(String(this[matching_object_property.php_property as keyof this]))
-                )
-                RDF_serialization.push(quad)
+                // TODO Récupérer le Resource Identifier de l'objet (et check)
+                const targeted_object = this[matching_object_property.php_property as keyof this];
+                if (RDFserializable.isRDFserializable(targeted_object)) {
+                    const quad = data_factory.quad(
+                        data_factory.namedNode(resource_identifier),
+                        data_factory.namedNode(matching_object_property.rdf_property),
+                        data_factory.namedNode(targeted_object.getResourceIdentifier())
+                    )
+                    RDF_serialization.push(quad)
+                } else {
+                    console.error(targeted_object + ' does\'nt seems to be URIfiable')
+                }
             }
         }
         console.log(RDF_serialization)

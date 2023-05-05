@@ -149,8 +149,6 @@ export default class RDFserializer_service {
     static getInstance() {
         if (!this.instance) {
             this.instance = new RDFserializer_service()
-            console.log('after ontologie initialization')
-
         }
         return this.instance
     }
