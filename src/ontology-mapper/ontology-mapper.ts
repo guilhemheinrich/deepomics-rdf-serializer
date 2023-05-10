@@ -100,6 +100,14 @@ export default class RDFserializer_service {
         }
     }
 
+    array_unifier<T>(an_array: T[]) {
+        const unique_dict: {[hash: string] : T} = {}
+        for (let value of an_array) {
+            unique_dict[JSON.stringify(value)] = value
+        }
+        return Object.values(unique_dict)
+    }
+
     mapping_templater() {
         const mappings: Optional_Class_Mapping_constructorI[] = []
         // Iterate over all concept
@@ -123,9 +131,6 @@ export default class RDFserializer_service {
             // Iterate over properties
             for (let property_uri of concept.properties) {
                 const property = this.RDF_handler.gql_resources_preprocesing[property_uri]
-                console.log("property.name")
-                console.log(property.name)
-                console.log(property)
                 // Skip the property if it is an annotation property
                 if (this.RDF_handler.isAnnotationProperty(property)) continue
                 (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
@@ -134,6 +139,7 @@ export default class RDFserializer_service {
                 })
 
             }
+            entry.object_properties = this.array_unifier(<Erasable_Property_Mapping_constructor[]>entry.object_properties)
             mappings.push(entry)
         }
         return mappings
