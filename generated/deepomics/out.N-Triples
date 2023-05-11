@@ -1,0 +1,24 @@
+<http://opendata.inrae.fr/project/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> <http://opendata.inrae.fr/Project> .
+
+<http://opendata.inrae.fr/project/0> <http://www.w3.org/2000/01/rdf-schema#label> "project_0" .
+
+<http://opendata.inrae.fr/project/0> <http://opendata.inrae.fr/hasCoordinator> <http://opendata.inrae.fr/coordinator/0> .
+
+<http://opendata.inrae.fr/project/0> <http://www.w3.org/2000/01/rdf-schema#comments> "This project is trully unbelievable !" .
+
+<http://opendata.inrae.fr/project/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> <http://opendata.inrae.fr/Project> .
+
+<http://opendata.inrae.fr/project/1> <http://www.w3.org/2000/01/rdf-schema#label> "project_1" .
+
+<http://opendata.inrae.fr/project/1> <http://opendata.inrae.fr/hasCoordinator> <http://opendata.inrae.fr/coordinator/0> .
+
+<http://opendata.inrae.fr/project/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> <http://opendata.inrae.fr/Project> .
+
+<http://opendata.inrae.fr/project/2> <http://www.w3.org/2000/01/rdf-schema#label> "project_2" .
+
+<http://opendata.inrae.fr/project/2> <http://opendata.inrae.fr/hasCoordinator> <http://opendata.inrae.fr/coordinator/0> .
+
+<http://opendata.inrae.fr/coordinator/0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Class> <http://opendata.inrae.fr/Coordinator> .
+
+<http://opendata.inrae.fr/coordinator/0> <http://www.w3.org/2000/01/rdf-schema#label> "Ariane Bize" .
+

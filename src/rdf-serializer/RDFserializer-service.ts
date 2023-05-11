@@ -6,7 +6,8 @@ import fs from 'fs-extra'
 import path from 'path'
 import yaml from 'js-yaml'
 import { walker_recursive_sync } from '../Helper/walker'
-import { Class_MappingI, Class_Mapping_constructorI, Erasable_Property_Mapping_constructor, Optional_Class_Mapping_constructorI, Property_Mapping_constructor} from '../Type/Mapping'
+import array_unifier from '../Helper/array_unifier'
+import { Class_MappingI, Class_Mapping_constructorI, Erasable_Property_Mapping_constructor, Optional_Class_Mapping_constructorI, Property_Mapping_constructor } from '../Type/Mapping'
 import { ConfigurationI, Optional_ConfigurationI } from '../Type/Configuration'
 dotenv.config()
 
@@ -39,32 +40,36 @@ class Mapping_Dictionary {
 export default class RDFserializer_service {
     private static instance: RDFserializer_service
     readonly mapping_dictionary: Mapping_Dictionary
-    readonly prefixes: Set<string> = new Set<string>()
+    readonly prefixes: {
+        [prefix: string]: string
+    } = {}
     static readonly MAPPINGS_FILE_KEY = "MAPPINGS_FILE"
     static readonly GENERATED_MAPPINGS_KEY = "GENERATED_MAPPING_FILE"
 
     private constructor() {
         const generated_mapping_path = <string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY]
         const custom_mapping_path = <string>process.env[RDFserializer_service.MAPPINGS_FILE_KEY]
-        
-        
+
+
         // Read custom configuration
         let file_content = fs.readFileSync(custom_mapping_path, { encoding: 'utf-8' })
         const core_configuration = <ConfigurationI>yaml.load(file_content)
         // Read optional configuration
         file_content = fs.readFileSync(generated_mapping_path, { encoding: 'utf-8' })
         const generated_configuration = <Optional_ConfigurationI>yaml.load(file_content)
-        
-        
+
+
         // Get the prefixes array
         if (generated_configuration?.Prefixes) {
             for (let prefix_entry of generated_configuration.Prefixes) {
-                this.prefixes.add(JSON.stringify(prefix_entry))
+                this.prefixes[prefix_entry.key] = prefix_entry.value
+                // this.prefixes.add(JSON.stringify(prefix_entry))
             }
         }
         if (core_configuration?.Prefixes) {
             for (let prefix_entry of core_configuration.Prefixes) {
-                this.prefixes.add(JSON.stringify(prefix_entry))
+                // this.prefixes.add(JSON.stringify(prefix_entry))
+                this.prefixes[prefix_entry.key] = prefix_entry.value
             }
         }
         // Build the generic configuration
@@ -87,7 +92,11 @@ export default class RDFserializer_service {
         for (let custom_class_mapping of (core_configuration?.Specific ?? [])) {
             this._handle_class_mapping_constructor(custom_class_mapping)
         }
-
+        // Uniquify
+        for (let class_mapping of Object.values(this.mapping_dictionary)) {
+            class_mapping.data_properties = array_unifier(class_mapping.data_properties)
+            class_mapping.object_properties = array_unifier(class_mapping.object_properties)
+        }
     }
 
     private _handle_class_mapping_constructor(class_mapping_contructor: Optional_Class_Mapping_constructorI) {
@@ -125,7 +134,7 @@ export default class RDFserializer_service {
             const deletable_property_mapping_index = properties.findIndex((property_mapping) => {
                 if ('php_property' in property_mapping && 'php_property' in optional_property_constructor) {
                     return property_mapping.php_property == optional_property_constructor.php_property && property_mapping.rdf_property == optional_property_constructor.rdf_property
-                } else if ('value' in property_mapping && 'value' in optional_property_constructor){
+                } else if ('value' in property_mapping && 'value' in optional_property_constructor) {
                     return property_mapping.value == optional_property_constructor.value && property_mapping.rdf_property == optional_property_constructor.rdf_property
 
                 }
@@ -153,6 +162,26 @@ export default class RDFserializer_service {
         return this.instance
     }
 
+    irify(prefixed_or_uri: string) {
+
+        for (let prefix in this.prefixes) {
+            const value = this.prefixes[prefix]
+            if (prefixed_or_uri.startsWith(prefix + ':')) {
+                return value + prefixed_or_uri.slice(prefix.length + 1)
+            }
+        }
+        return prefixed_or_uri
+    }
+
+    prefixify(prefixed_or_uri : string) {
+        for (let prefix in this.prefixes) {
+            const value = this.prefixes[prefix]
+            if (prefixed_or_uri.startsWith(value)) {
+                return prefix + ':' + prefixed_or_uri.slice(value.length)
+            }
+        }
+        return prefixed_or_uri
+    }
     getClassMappings(class_key: string) {
         return this.mapping_dictionary[class_key]
     }

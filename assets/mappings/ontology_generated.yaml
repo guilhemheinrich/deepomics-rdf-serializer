@@ -139,7 +139,7 @@ Specific:
     object_properties:
       - value: http://opendata.inrae.fr/Project
         rdf_property: rdf:Class
-      - php_property: http://opendata.inrae.fr/Project
+      - php_property: coordinator
         rdf_property: deepomics:hasCoordinator
   - key: Rfb9ON3BGs2PyxVSO1xyQa
     data_properties: []

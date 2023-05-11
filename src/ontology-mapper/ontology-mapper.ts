@@ -5,6 +5,8 @@ import fs from 'fs-extra'
 import path from 'path'
 import yaml from 'js-yaml'
 import { walker_recursive_sync } from '../Helper/walker'
+import camelize from '../Helper/camelize'
+import array_unifier from '../Helper/array_unifier'
 import { Gql_Generator } from './processRdf'
 import { Optional_Class_Mapping_constructorI, Erasable_Property_Mapping_constructor, Property_Mapping_constructor, Class_Mapping_constructorI } from '../Type/Mapping'
 import * as stream from 'stream/promises'
@@ -93,19 +95,12 @@ export default class RDFserializer_service {
         }
     }
 
-    shortener_property(uri: string) {
+    shortener_property(uri: string): string {
         const shorten_pass = this.shortener(uri)
         if (shorten_pass.startsWith("has")) {
-            
+            return camelize(shorten_pass.slice(3))
         }
-    }
-
-    array_unifier<T>(an_array: T[]) {
-        const unique_dict: {[hash: string] : T} = {}
-        for (let value of an_array) {
-            unique_dict[JSON.stringify(value)] = value
-        }
-        return Object.values(unique_dict)
+        return shorten_pass
     }
 
     mapping_templater() {
@@ -134,12 +129,12 @@ export default class RDFserializer_service {
                 // Skip the property if it is an annotation property
                 if (this.RDF_handler.isAnnotationProperty(property)) continue
                 (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
-                    php_property: concept.class_uri,
+                    php_property: this.shortener_property(property.class_uri),
                     rdf_property: this.RDF_handler.prefixer(property.class_uri)
                 })
 
             }
-            entry.object_properties = this.array_unifier(<Erasable_Property_Mapping_constructor[]>entry.object_properties)
+            entry.object_properties = array_unifier(<Erasable_Property_Mapping_constructor[]>entry.object_properties)
             mappings.push(entry)
         }
         return mappings
