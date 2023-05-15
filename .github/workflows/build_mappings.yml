@@ -22,13 +22,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with:
         token: ${{ secrets.GH_PAT }}
         repository: guilhemheinrich/deepomics-ontology
         path: pulled-ontologies
     # installing Node
     - name: Use Node.js 16.x
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         # this will use the latest Node 12 version
         node-version: 16.x
