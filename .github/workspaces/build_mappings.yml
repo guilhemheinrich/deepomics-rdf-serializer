@@ -1,0 +1,40 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI Pipeline
+
+# trigger build when pushing, or when creating a pull request
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to build'
+        required: true
+      environment:
+        description: 'The environment to deploy to'
+        required: false
+
+jobs:
+  build:
+
+    # run build on latest ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
+        repository: guilhemheinrich/deepomics-ontology
+        path: pulled-ontologies
+    # installing Node
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        # this will use the latest Node 12 version
+        node-version: 16.x
+    # install dependencies using clean install to avoid package lock updates
+    - run: npm ci
+    # build the project if necessary
+    - run: npm run build --if-present
+    # finally run the tests
+    - run: npm test
