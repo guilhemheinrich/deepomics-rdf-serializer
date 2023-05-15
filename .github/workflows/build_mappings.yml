@@ -25,7 +25,6 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
         repository: guilhemheinrich/deepomics-ontology
-        branch: develop
         path: pulled-ontologies
     # installing Node
     - name: Use Node.js 16.x
