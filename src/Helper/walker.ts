@@ -26,7 +26,7 @@ export function* walker_recursive_sync(directory:string): Iterable<string> {
     for (const dirent of dirents) {
         const res = path.resolve(directory, dirent.name);
         if (dirent.isDirectory()) {
-          yield* walker_recursive_sync(res);
+          yield* walker_recursive_sync(<string>res);
         } else {
           yield res;
         }
