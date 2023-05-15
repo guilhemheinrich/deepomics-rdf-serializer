@@ -4,24 +4,34 @@
   "description": "Un fonctionalité de sérialisation rdf",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-mapping": "ts-node ./mapping-generation.ts",
+    "test-serialization": "ts-node ./rdf-generation.ts",
+    "build": "grunt",
+    "test": "node out/mapping-generation.js"
   },
   "keywords": [
     "rdf",
     "semantics",
     "serialisation"
   ],
+  "browser": {
+    "[module-name]": false
+  },
   "author": "Guilhem HEINRICH",
   "license": "ISC",
   "devDependencies": {
     "@rdfjs/types": "^1.1.0",
-    "@types/fs-extra": "^11.0.1"
+    "@types/fs-extra": "^11.0.1",
+    "grunt": "^1.6.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@types/js-yaml": "^4.0.5",
     "@types/n3": "^1.10.4",
     "dotenv": "^16.0.3",
     "fs-extra": "^11.1.1",
+    "grunt-ts": "^6.0.0-beta.22",
     "js-yaml": "^4.1.0",
     "n3": "^1.16.4",
     "rdf-js": "^4.0.2",
