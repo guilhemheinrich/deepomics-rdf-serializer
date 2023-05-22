@@ -92,7 +92,7 @@ export class Gql_Generator {
         __dirname + '/./prefixes/standard_prefixes.json'
     ]) {
         // Add owl:Thing in gqlResource
-        this.prefix_handler= new Prefixer(array_pathes_to_prefixes)
+        this.prefix_handler = new Prefixer(array_pathes_to_prefixes)
         this.gql_resources_preprocesing[this.expender('owl:Thing')] = {
             class_uri: this.expender('owl:Thing'),                  // Initialize with the uri
             name: "Thing",                                          // Initialize with the uri
@@ -106,8 +106,6 @@ export class Gql_Generator {
             isRequired: false,
             isList: false
         }
-        console.log(this.prefix_handler.prefix_array)
-        console.log(this.gql_resources_preprocesing)
     }
 
 
@@ -177,6 +175,7 @@ export class Gql_Generator {
     getInheritedValues(uri: string, key: "properties"): Array<string[]>
     getInheritedValues(uri: string, key: "inherits"): Array<string[]>
     getInheritedValues(uri: string, key: "type"): Array<string>
+    getInheritedValues(uri: string, key: "class"): Array<string>
     getInheritedValues(uri: string, key: keyof Gql_Resource): Array<Gql_Resource[typeof key]> {
         let inherited_values: Array<Gql_Resource[typeof key]> = []
 
@@ -191,27 +190,18 @@ export class Gql_Generator {
     }
 
     isAnnotationProperty(resource: Gql_Resource) {
-        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
-        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
-            return [...property_inheritance_mail, ...current_inheritance_chain]
-        })
-        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:AnnotationProperty"))
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "class")
+        return properties_inheritance.includes(this.expender("owl:AnnotationProperty"))
     }
 
     isObjectProperty(resource: Gql_Resource) {
-        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
-        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
-            return [...property_inheritance_mail, ...current_inheritance_chain]
-        })
-        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:ObjectProperty"))
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "class")
+        return properties_inheritance.includes(this.expender("owl:ObjectProperty"))
     }
 
     isDatatypeProperty(resource: Gql_Resource) {
-        const properties_inheritance = this.getInheritedValues(resource.class_uri, "inherits")
-        const flattened_inheritance_chain = properties_inheritance.reduce((property_inheritance_mail, current_inheritance_chain: string[]) => {
-            return [...property_inheritance_mail, ...current_inheritance_chain]
-        })
-        return flattened_inheritance_chain.map(this.expender).includes(this.expender("owl:DatatypeProperty"))
+        const properties_inheritance = this.getInheritedValues(resource.class_uri, "class")
+        return properties_inheritance.includes(this.expender("owl:DatatypeProperty"))
     }
 
     processRdf(quad: Quad) {
@@ -251,12 +241,9 @@ export class Gql_Generator {
                 this.gql_resources_preprocesing[subject].class = object
                 break
             case "rdfs:subPropertyOf":
-                // Handle property inheritance
-                // TODO
                 this.gql_resources_preprocesing[subject].inherits.push(object)
                 break
             case "rdfs:subClassOf":
-                // Handle class inheritance
                 this.gql_resources_preprocesing[subject].inherits.push(object)
                 break
             case "rdfs:label":
@@ -272,6 +259,12 @@ export class Gql_Generator {
                 this.gql_resources_preprocesing[object].properties.push(subject)
                 this.gql_resources_preprocesing[subject].domains.push(object)
                 break
+            // TODO List comprehension
+            case "rdfs:Container":
+            case "rdfs:Bags":
+            case "rdfs:Seq":
+            case "rdfs:Alt":
+                break;
             //                  _ 
             //                 | |
             //     _____      _| |

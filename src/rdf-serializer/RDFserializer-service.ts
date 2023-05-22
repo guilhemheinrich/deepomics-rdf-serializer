@@ -123,7 +123,7 @@ export default class RDFserializer_service {
         for (let object_property of (class_mapping_contructor.object_properties ?? [])) {
             this._handle_property_mapping_constructor(object_property, new_mapping.object_properties)
         }
-
+        console.log(new_mapping.data_properties)
         if (class_mapping_contructor.inherits) class_mapping_contructor.inherits.forEach((class_key) => new_mapping.inherits.add(class_key))
         this.mapping_dictionary[class_mapping_contructor.key] = new_mapping
     }

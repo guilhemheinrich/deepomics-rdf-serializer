@@ -27,7 +27,7 @@ export default class RDFserializable {
         const data_factory = new DataFactory()
         const RDF_serialization: Quad[] = []
         const resource_identifier = this.getResourceIdentifier()
-
+        console.log(class_mapping)
         // Static mapping
         const static_data_properties = class_mapping.data_properties.filter(isStaticProperty)
         const static_object_properties = class_mapping.object_properties.filter(isStaticProperty)
@@ -53,29 +53,34 @@ export default class RDFserializable {
         const dynamic_object_properties = class_mapping.object_properties.filter(isDynamicProperty)
         for (let property_name of Object.getOwnPropertyNames(this)) {
             // Dynamic data properties
-            const matching_data_property = dynamic_data_properties.find((data_property) => data_property.php_property == property_name)
-            if (matching_data_property !== undefined && this[matching_data_property.php_property as keyof this] !== undefined) {
-                const quad = data_factory.quad(
-                    data_factory.namedNode(rdf_mapper.irify(resource_identifier)),
-                    data_factory.namedNode(rdf_mapper.irify(matching_data_property.rdf_property)),
-                    data_factory.literal(String(this[matching_data_property.php_property as keyof this]))
-                )
-                RDF_serialization.push(quad)
-            }
-            // Dynamic object properties
-            const matching_object_property = dynamic_object_properties.find((data_property) => data_property.php_property == property_name)
-            if (matching_object_property !== undefined && this[matching_object_property.php_property as keyof this] !== undefined) {
-                // TODO Récupérer le Resource Identifier de l'objet (et check)
-                const targeted_object = this[matching_object_property.php_property as keyof this];
-                if (RDFserializable.isRDFserializable(targeted_object)) {
+            const matching_data_properties = dynamic_data_properties.filter((data_property) => data_property.php_property == property_name)
+            console.log(matching_data_properties)
+            for (let matching_data_property of matching_data_properties) {
+                if (this[matching_data_property.php_property as keyof this] !== undefined) {
+                    // if (matching_data_property !== undefined && this[matching_data_property.php_property as keyof this] !== undefined) {
                     const quad = data_factory.quad(
                         data_factory.namedNode(rdf_mapper.irify(resource_identifier)),
-                        data_factory.namedNode(rdf_mapper.irify(matching_object_property.rdf_property)),
-                        data_factory.namedNode(rdf_mapper.irify(targeted_object.getResourceIdentifier()))
+                        data_factory.namedNode(rdf_mapper.irify(matching_data_property.rdf_property)),
+                        data_factory.literal(String(this[matching_data_property.php_property as keyof this]))
                     )
                     RDF_serialization.push(quad)
-                } else {
-                    console.error(targeted_object + ' does\'nt seems to be URIfiable')
+                }
+            }
+            // Dynamic object properties
+            const matching_object_properties = dynamic_object_properties.filter((data_property) => data_property.php_property == property_name)
+            for (let matching_object_property of matching_object_properties) {
+                if (matching_object_property !== undefined && this[matching_object_property.php_property as keyof this] !== undefined) {
+                    const targeted_object = this[matching_object_property.php_property as keyof this];
+                    if (RDFserializable.isRDFserializable(targeted_object)) {
+                        const quad = data_factory.quad(
+                            data_factory.namedNode(rdf_mapper.irify(resource_identifier)),
+                            data_factory.namedNode(rdf_mapper.irify(matching_object_property.rdf_property)),
+                            data_factory.namedNode(rdf_mapper.irify(targeted_object.getResourceIdentifier()))
+                        )
+                        RDF_serialization.push(quad)
+                    } else {
+                        console.error(targeted_object + ' does\'nt seems to be URIfiable')
+                    }
                 }
             }
         }

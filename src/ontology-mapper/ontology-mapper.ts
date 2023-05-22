@@ -28,14 +28,13 @@ export default class RDFserializer_service {
         if (!this.instance) {
             this.instance = new RDFserializer_service()
             await this.instance.initializeOntologie()
-            console.log('after ontologie initialization')
-
         }
         return this.instance
     }
 
     private async initializeOntologie() {
         const ontologie_folder_path = <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
+        // const prefixParse: Promise<unknown>[] = []
         const allParse: Promise<unknown>[] = []
         for (const filename of walker_recursive_sync(ontologie_folder_path)) {
             let contentType = ''
@@ -47,20 +46,50 @@ export default class RDFserializer_service {
                 case '.rdf':
                     contentType = 'application/rdf+xml'
                     break;
+                default:
+                    continue
 
             }
+
+            // const prefixStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
+            // .on('prefix', (prefix: string, iri: string) => {
+            //     console.log('Read prefix ' + prefix)
+            //     this.RDF_handler.prefix_handler.prefix_array.push({
+            //         prefix: prefix,
+            //         uri: iri
+            //     })
+            // })
+            // .on('data', () => {})
+            // .on('error', (error) => console.error(error))
+            // .on('end', () => {
+            //     console.log('finished reading prefixes from ' + filename)
+
+            //     // console.log(this.ontologie_triple)
+            // });
+            // prefixParse.push(stream.finished(prefixStream))
             const parseStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
                 .on('data', (quad: Quad) => {
                     this.RDF_handler.processRdf(quad)
                 })
                 .on('error', (error) => console.error(error))
                 .on('end', () => {
-                    console.log('finished ' + filename)
+                    console.log('finished reading quad from ' + filename)
 
                     // console.log(this.ontologie_triple)
                 });
             allParse.push(stream.finished(parseStream))
         }
+        // await Promise.all(prefixParse)
+        // .then((values) => {
+        //     console.log(values)
+        //     // return Promise.all(allParse)
+        //     //     .then((values) => {
+
+        //     //     })
+        //     //     .catch((err) => console.log(err))
+        //     console.log(this.RDF_handler.prefix_handler.prefix_array)
+        // })
+        // .catch((err) => console.log(err))
         await Promise.all(allParse)
             .then((values) => {
 
@@ -80,7 +109,6 @@ export default class RDFserializer_service {
         const uri_separator = new RegExp(/(^.*[\/#])([\d\w]*)$/gm)
         let matches = uri.matchAll(uri_separator)
         const _array = Array.from(matches)
-        console.log(matches)
         if (_array && _array.length > 0) {
             let prefix = _array[0][1]
             if (false) {
@@ -112,8 +140,6 @@ export default class RDFserializer_service {
             return resource.isAbstract && resource.class_uri == this.RDF_handler.expender("owl:Restriction")
         })
         for (let concept of concepts) {
-            console.log("concept.name")
-            console.log(concept.name)
             let entry: Class_Mapping_constructorI = {
                 key: this.shortener(concept.class_uri),
                 data_properties: [],
@@ -125,13 +151,23 @@ export default class RDFserializer_service {
             })
             // Iterate over properties
             for (let property_uri of concept.properties) {
+
                 const property = this.RDF_handler.gql_resources_preprocesing[property_uri]
                 // Skip the property if it is an annotation property
                 if (this.RDF_handler.isAnnotationProperty(property)) continue
-                (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
-                    php_property: this.shortener_property(property.class_uri),
-                    rdf_property: this.RDF_handler.prefixer(property.class_uri)
-                })
+                if (this.RDF_handler.isDatatypeProperty(property)) {
+                    console.log(property_uri + " is a dtatatype property");
+                    (<Erasable_Property_Mapping_constructor[]>entry.data_properties).push(<Erasable_Property_Mapping_constructor>{
+                        php_property: this.shortener_property(property.class_uri),
+                        rdf_property: this.RDF_handler.prefixer(property.class_uri)
+                    })
+                } else {
+
+                    (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
+                        php_property: this.shortener_property(property.class_uri),
+                        rdf_property: this.RDF_handler.prefixer(property.class_uri)
+                    })
+                }
 
             }
             entry.object_properties = array_unifier(<Erasable_Property_Mapping_constructor[]>entry.object_properties)
