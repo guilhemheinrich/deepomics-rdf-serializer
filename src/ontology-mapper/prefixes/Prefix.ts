@@ -97,8 +97,6 @@ export class Prefixer {
             return new_prefix_uri
         } else {
             console.debug(`${uri} is not a valid uri according to the pattern ${this.uri_separator}`)
-            console.log(uri)
-            console.log(_match)
         }
         // So the compilator does'nt ennoy us, and a potential weird result is "easily" spottable
         return {

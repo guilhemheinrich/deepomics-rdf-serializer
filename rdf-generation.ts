@@ -78,7 +78,6 @@ for (let format of base_format) {
         prefixes: rdfSerializer_service.prefixes,
         format: <BaseFormat>format
     })
-
     rdf_writer.addQuads(weirdo.RDFserializer())
     rdf_writer.end((error, result) => {
         const line_breaked_content = result.replace(end_of_resource_PATTERN, "$1\r\n")
