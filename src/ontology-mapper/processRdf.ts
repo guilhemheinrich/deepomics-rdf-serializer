@@ -59,7 +59,7 @@ class Gql_Resource_Dictionary {
                         domains: [],
                         type: '',
                         isRequired: false,
-                        isList: false
+                        isList: true
                     }
                 }
                 return Reflect.get(target, prop)
@@ -278,11 +278,28 @@ export class Gql_Generator {
             case "owl:someValuesFrom":
                 console.log(`${subject} ${predicate} ${object}`)
                 break
-            case "owl:qualifiedCardinality":
+            case "owl:minQualifiedCardinality":
+            case "owl:minCardinality":
                 let cardinality = Number(object)
+                if (cardinality >= 1) {
+                    this.gql_resources_preprocesing[subject].isRequired = true
+                }
+                console.log(`${subject} ${predicate} ${object}`)
+                break
+            case "owl:maxQualifiedCardinality":
+            case "owl:maxCardinality":
+                cardinality = Number(object)
+                if (cardinality <= 1) {
+                    this.gql_resources_preprocesing[subject].isList = false
+                }
+                console.log(`${subject} ${predicate} ${object}`)
+                break
+            case "owl:qualifiedCardinality":
+            case "owl:cardinality":
+                cardinality = Number(object)
                 this.gql_resources_preprocesing[subject].isRequired = true
-                if (cardinality > 1) {
-                    this.gql_resources_preprocesing[subject].isList = true
+                if (cardinality == 1) {
+                    this.gql_resources_preprocesing[subject].isList = false
                 }
                 console.log(`${subject} ${predicate} ${object}`)
                 break

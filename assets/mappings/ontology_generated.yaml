@@ -4,163 +4,6 @@ Specific:
     object_properties:
       - value: http://www.w3.org/2002/07/owl#Thing
         rdf_property: rdf:Class
-  - key: BioinformaticWorkflow
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/BioinformaticWorkflow
-        rdf_property: rdf:Class
-  - key: ExtractionAndSequencingProcedures
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/ExtractionAndSequencingProcedures
-        rdf_property: rdf:Class
-  - key: MonitoredParametersValues
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/MonitoredParametersValues
-        rdf_property: rdf:Class
-  - key: PCRconditions
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/PCRconditions
-        rdf_property: rdf:Class
-  - key: Coordinator
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/Coordinator
-        rdf_property: rdf:Class
-  - key: ProjectStatus
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/ProjectStatus
-        rdf_property: rdf:Class
-  - key: R0vQz5v5oAWsQqDrRJiEmk
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R0vQz5v5oAWsQqDrRJiEmk
-        rdf_property: rdf:Class
-  - key: R31IIiJsQgdXVd9R1V3JzK
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R31IIiJsQgdXVd9R1V3JzK
-        rdf_property: rdf:Class
-  - key: R7i1g5l24IgUPk47WkCbXl6
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R7i1g5l24IgUPk47WkCbXl6
-        rdf_property: rdf:Class
-  - key: R8L7Tt57H5wARQtTc2lB5j2
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R8L7Tt57H5wARQtTc2lB5j2
-        rdf_property: rdf:Class
-  - key: R8ZfXvfOenQJl0Iy5anZJo
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R8ZfXvfOenQJl0Iy5anZJo
-        rdf_property: rdf:Class
-  - key: R9Bpeod8RWi83G6WMQdgd4
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R9Bpeod8RWi83G6WMQdgd4
-        rdf_property: rdf:Class
-  - key: R9ECpaLRdJqqYcsc1SNHYI0
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R9ECpaLRdJqqYcsc1SNHYI0
-        rdf_property: rdf:Class
-  - key: R9lqY9PvvxLPOdsfkH3IpmT
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R9lqY9PvvxLPOdsfkH3IpmT
-        rdf_property: rdf:Class
-  - key: R9zv4zizmMYQ4Ri25GOdBbZ
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/R9zv4zizmMYQ4Ri25GOdBbZ
-        rdf_property: rdf:Class
-  - key: RBFDF1ED2ddpRUQeraazOTB
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RBFDF1ED2ddpRUQeraazOTB
-        rdf_property: rdf:Class
-  - key: RCJHjWRnseBqph8bD9zewGF
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RCJHjWRnseBqph8bD9zewGF
-        rdf_property: rdf:Class
-  - key: RCVoiubGarAjlzSe2KaZQ85
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RCVoiubGarAjlzSe2KaZQ85
-        rdf_property: rdf:Class
-  - key: RCdwDIy9ZQUXq2nO2AU8Nbj
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RCdwDIy9ZQUXq2nO2AU8Nbj
-        rdf_property: rdf:Class
-  - key: RD2zZxblOdtm9rug8MSF5SW
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RD2zZxblOdtm9rug8MSF5SW
-        rdf_property: rdf:Class
-  - key: RDiOpHJWqpm6LhZzk8jZiJu
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RDiOpHJWqpm6LhZzk8jZiJu
-        rdf_property: rdf:Class
-  - key: RDye55BBTTvSE3XSpskCyyO
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RDye55BBTTvSE3XSpskCyyO
-        rdf_property: rdf:Class
-  - key: RGqfVMSr7brs5umWLFqja9
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RGqfVMSr7brs5umWLFqja9
-        rdf_property: rdf:Class
-  - key: RHbmcqQacw0ZATMxnsbYBd
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RHbmcqQacw0ZATMxnsbYBd
-        rdf_property: rdf:Class
-  - key: RJVWzyLN46xRFZUDi6vZPw
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RJVWzyLN46xRFZUDi6vZPw
-        rdf_property: rdf:Class
-  - key: RY0uXvXQWLncugFW7GQRq8
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RY0uXvXQWLncugFW7GQRq8
-        rdf_property: rdf:Class
-  - key: Project
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/Project
-        rdf_property: rdf:Class
-      - php_property: coordinator
-        rdf_property: deepomics:hasCoordinator
-  - key: Rfb9ON3BGs2PyxVSO1xyQa
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/Rfb9ON3BGs2PyxVSO1xyQa
-        rdf_property: rdf:Class
-  - key: RqbmhyT5wQ7YNnTWhLhKd3
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/RqbmhyT5wQ7YNnTWhLhKd3
-        rdf_property: rdf:Class
-  - key: TaxonAnnotation
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/TaxonAnnotation
-        rdf_property: rdf:Class
-  - key: TaxonCount
-    data_properties: []
-    object_properties:
-      - value: http://opendata.inrae.fr/TaxonCount
-        rdf_property: rdf:Class
   - key: Agent
     data_properties: []
     object_properties:
@@ -273,8 +116,165 @@ Specific:
         rdf_property: rdf:Class
   - key: Weirdo
     data_properties:
-      - php_property: name
+      - php_property: names
         rdf_property: deepomics:hasName
     object_properties:
       - value: http://opendata.inrae.fr/Weirdo
+        rdf_property: rdf:Class
+  - key: BioinformaticWorkflow
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/BioinformaticWorkflow
+        rdf_property: rdf:Class
+  - key: ExtractionAndSequencingProcedures
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/ExtractionAndSequencingProcedures
+        rdf_property: rdf:Class
+  - key: MonitoredParametersValues
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/MonitoredParametersValues
+        rdf_property: rdf:Class
+  - key: PCRconditions
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/PCRconditions
+        rdf_property: rdf:Class
+  - key: Coordinator
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Coordinator
+        rdf_property: rdf:Class
+  - key: ProjectStatus
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/ProjectStatus
+        rdf_property: rdf:Class
+  - key: SequencingSample
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/SequencingSample
+        rdf_property: rdf:Class
+  - key: FieldOrFullScaleProcess
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/FieldOrFullScaleProcess
+        rdf_property: rdf:Class
+  - key: LaboratoryReactor
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/LaboratoryReactor
+        rdf_property: rdf:Class
+  - key: MonitoredParameter
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/MonitoredParameter
+        rdf_property: rdf:Class
+  - key: Observer
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Observer
+        rdf_property: rdf:Class
+  - key: MetabarcodingRun
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/MetabarcodingRun
+        rdf_property: rdf:Class
+  - key: ProcessCategory
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/ProcessCategory
+        rdf_property: rdf:Class
+  - key: Biosample
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Biosample
+        rdf_property: rdf:Class
+  - key: Replicate
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Replicate
+        rdf_property: rdf:Class
+  - key: Participants
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Participants
+        rdf_property: rdf:Class
+  - key: ExperimentalSeries
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/ExperimentalSeries
+        rdf_property: rdf:Class
+  - key: Operator
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Operator
+        rdf_property: rdf:Class
+  - key: BiosampleSequencingRawData
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiosampleSequencingRawData
+        rdf_property: rdf:Class
+  - key: SequencingRun
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/SequencingRun
+        rdf_property: rdf:Class
+  - key: BiosampleSequencingProcessedData
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiosampleSequencingProcessedData
+        rdf_property: rdf:Class
+  - key: SamplingSite
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/SamplingSite
+        rdf_property: rdf:Class
+  - key: BiotechnologicalProcess
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiotechnologicalProcess
+        rdf_property: rdf:Class
+  - key: Input
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Input
+        rdf_property: rdf:Class
+  - key: SamplingCampaign
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/SamplingCampaign
+        rdf_property: rdf:Class
+  - key: Compartment
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Compartment
+        rdf_property: rdf:Class
+  - key: Project
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Project
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics_inrae_fr:hasCoordinator
+  - key: OperatingCondition
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/OperatingCondition
+        rdf_property: rdf:Class
+  - key: Reactor
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/Reactor
+        rdf_property: rdf:Class
+  - key: TaxonAnnotation
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/TaxonAnnotation
+        rdf_property: rdf:Class
+  - key: TaxonCount
+    data_properties: []
+    object_properties:
+      - value: http://deepomics.inrae.fr/TaxonCount
         rdf_property: rdf:Class

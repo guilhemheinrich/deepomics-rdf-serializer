@@ -156,15 +156,16 @@ export default class RDFserializer_service {
                 // Skip the property if it is an annotation property
                 if (this.RDF_handler.isAnnotationProperty(property)) continue
                 if (this.RDF_handler.isDatatypeProperty(property)) {
-                    console.log(property_uri + " is a dtatatype property");
+                    console.log(property_uri + " is a datatype property" + (property.isList ? ' and a list': ''));
+                    
                     (<Erasable_Property_Mapping_constructor[]>entry.data_properties).push(<Erasable_Property_Mapping_constructor>{
-                        php_property: this.shortener_property(property.class_uri),
+                        php_property: this.shortener_property(property.class_uri) + (property.isList ? 's': ''),
                         rdf_property: this.RDF_handler.prefixer(property.class_uri)
                     })
                 } else {
-
+                    console.log(property_uri + " is an object property" + (property.isList ? ' and a list': ''));
                     (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
-                        php_property: this.shortener_property(property.class_uri),
+                        php_property: this.shortener_property(property.class_uri) + (property.isList ? 's': ''),
                         rdf_property: this.RDF_handler.prefixer(property.class_uri)
                     })
                 }

@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://opendata.inrae.fr/project/8wDYkRBgfO4riwsCEi9u0E#" xml:base="http://opendata.inrae.fr/project/8wDYkRBgfO4riwsCEi9u0E"
+<rdf:RDF xmlns="http://deepomics.inrae.fr/ontology/8wDYkRBgfO4riwsCEi9u0E#" xml:base="http://deepomics.inrae.fr/ontology/8wDYkRBgfO4riwsCEi9u0E"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
-    <owl:Ontology rdf:about="http://opendata.inrae.fr/project/8wDYkRBgfO4riwsCEi9u0E"/>
+    <owl:Ontology rdf:about="http://deepomics.inrae.fr/ontology/8wDYkRBgfO4riwsCEi9u0E"/>
 
 
 
@@ -38,9 +38,9 @@
 
 
 
-    <!-- http://opendata.inrae.fr/BioinformaticWorkflow -->
+    <!-- http://deepomics.inrae.fr/BioinformaticWorkflow -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/BioinformaticWorkflow">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/BioinformaticWorkflow">
         <rdfs:comment xml:lang="fr">L&apos;ensemble des outils bioinformatique, leur enchainement et leurs paramètres, utilisé pour traiter les données de séquencage ADN brutes</rdfs:comment>
         <rdfs:comment xml:lang="en">The set of bioinformatics tools, their sequence and parameters, used to process the raw DNA sequencing data.</rdfs:comment>
         <rdfs:label xml:lang="en">BioinformaticWorkflow</rdfs:label>
@@ -48,39 +48,39 @@
 
 
 
-    <!-- http://opendata.inrae.fr/ExtractionAndSequencingProcedures -->
+    <!-- http://deepomics.inrae.fr/ExtractionAndSequencingProcedures -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/ExtractionAndSequencingProcedures">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/ExtractionAndSequencingProcedures">
         <rdfs:comment xml:lang="en">A procedure used either for the nucleic acid extraction, the PCR amplification, the library preparation, or the sequecing.</rdfs:comment>
         <rdfs:label xml:lang="en">ExtractionAndSequencingProcedure</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/MonitoredParametersValues -->
+    <!-- http://deepomics.inrae.fr/MonitoredParametersValues -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/MonitoredParametersValues">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/MonitoredParametersValues">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label>MonitoredParametersValues</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/PCRconditions -->
+    <!-- http://deepomics.inrae.fr/PCRconditions -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/PCRconditions">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/PCRconditions">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">PCRconditions</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/Coordinator -->
+    <!-- http://deepomics.inrae.fr/Coordinator -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/Coordinator">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Coordinator">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://opendata.inrae.fr/hasCoordinator"/>
+                <owl:onProperty rdf:resource="http://deepomics.inrae.fr/hasCoordinator"/>
                 <owl:minCardinality rdf:datatype="xsd:nonNegativeInteger">1</owl:minCardinality>
             </owl:Restriction>
         </owl:equivalentClass>
@@ -89,80 +89,80 @@
 
 
 
-    <!-- http://opendata.inrae.fr/ProjectStatus -->
+    <!-- http://deepomics.inrae.fr/ProjectStatus -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/ProjectStatus">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/ProjectStatus">
         <rdfs:label>ProjectStatus</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R0vQz5v5oAWsQqDrRJiEmk -->
+    <!-- http://deepomics.inrae.fr/SequencingSample -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R0vQz5v5oAWsQqDrRJiEmk">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/SequencingSample">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">SequencingSample</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R31IIiJsQgdXVd9R1V3JzK -->
+    <!-- http://deepomics.inrae.fr/FieldOrFullScaleProcess -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R31IIiJsQgdXVd9R1V3JzK">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/FieldOrFullScaleProcess">
         <rdfs:comment xml:lang="en">Process with a full-scale or located on the field, as opposed to pilot reactors and laboratory reactors.</rdfs:comment>
         <rdfs:label xml:lang="en">FieldOrFullScaleProcess</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R7i1g5l24IgUPk47WkCbXl6 -->
+    <!-- http://deepomics.inrae.fr/LaboratoryReactor -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R7i1g5l24IgUPk47WkCbXl6">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/LaboratoryReactor">
         <rdfs:comment xml:lang="en">Reactor of small scale or pilot scale, as opposed to full-scale and field processes. The laboratory reactors are intended to be very precisely described, in terms of design and operation (volume, temperature, inputs, etc).</rdfs:comment>
         <rdfs:label xml:lang="en">LaboratoryReactor</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R8L7Tt57H5wARQtTc2lB5j2 -->
+    <!-- http://deepomics.inrae.fr/MonitoredParameter -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R8L7Tt57H5wARQtTc2lB5j2">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/MonitoredParameter">
         <rdfs:comment xml:lang="en">A quantitative parameter monitored either in a compartment of a laboratory reactor, or in an industrial process (e.g. pH, cumulated biogas production, qPCR analysis of total bacteria, ...).</rdfs:comment>
         <rdfs:label xml:lang="en">MonitoredParameter</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R8ZfXvfOenQJl0Iy5anZJo -->
+    <!-- http://deepomics.inrae.fr/Observer -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R8ZfXvfOenQJl0Iy5anZJo">
-        <rdfs:comment xml:lang="en">Persons who have access to a project and all its data and metadata, with read access only.</rdfs:comment>
-        <rdfs:label xml:lang="en">Observers</rdfs:label>
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Observer">
+        <rdfs:comment xml:lang="en">Person who have access to a project and all its data and metadata, with read access only.</rdfs:comment>
+        <rdfs:label xml:lang="en">Observer</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R9Bpeod8RWi83G6WMQdgd4 -->
+    <!-- http://deepomics.inrae.fr/MetabarcodingRun -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R9Bpeod8RWi83G6WMQdgd4">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/MetabarcodingRun">
         <rdfs:comment xml:lang="en">It represents a sequencing run, in this precise case for amplicon sequencing. It is thus described with its main characteristics (such as the sequencing apparatus) and it gathers all the biosamples from the considered project sequenced during the same run.</rdfs:comment>
         <rdfs:label xml:lang="en">MetabarcodingRun</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R9ECpaLRdJqqYcsc1SNHYI0 -->
+    <!-- http://deepomics.inrae.fr/ProcessCategory -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R9ECpaLRdJqqYcsc1SNHYI0">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/ProcessCategory">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">ProcessCategory</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/R9lqY9PvvxLPOdsfkH3IpmT -->
+    <!-- http://deepomics.inrae.fr/Biosample -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R9lqY9PvvxLPOdsfkH3IpmT">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Biosample">
         <rdfs:comment xml:lang="en">It represents a physical sample for which you plan to perform a specific meta-omics analysis.</rdfs:comment>
         <rdfs:label xml:lang="en">Biosample</rdfs:label>
         <skos:example xml:lang="en">It is advised to create them in DeepOmics before the acquisition of the corresponding meta-omics data. If two different meta-omics analyses will be performed on a same physical samples, two distinct biosamples need to be created.</skos:example>
@@ -170,117 +170,129 @@
 
 
 
-    <!-- http://opendata.inrae.fr/R9zv4zizmMYQ4Ri25GOdBbZ -->
+    <!-- http://deepomics.inrae.fr/Replicate -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/R9zv4zizmMYQ4Ri25GOdBbZ">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Replicate">
         <rdfs:comment xml:lang="en">Reactors which were subjected to the exact same treatment; they are grouped by operating conditions.</rdfs:comment>
         <rdfs:label xml:lang="en">Replicate</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RBFDF1ED2ddpRUQeraazOTB -->
+    <!-- http://deepomics.inrae.fr/Participants -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RBFDF1ED2ddpRUQeraazOTB">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Participants">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">Participants</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RCJHjWRnseBqph8bD9zewGF -->
+    <!-- http://deepomics.inrae.fr/ExperimentalSeries -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RCJHjWRnseBqph8bD9zewGF">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/ExperimentalSeries">
         <rdfs:comment xml:lang="en">They represent a consistent batch of experiments led into reactors or pilots, within a project. They are structured into operating conditions and replicates.</rdfs:comment>
         <rdfs:label xml:lang="en">ExperimentalSeries</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RCVoiubGarAjlzSe2KaZQ85 -->
+    <!-- http://deepomics.inrae.fr/Operator -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RCVoiubGarAjlzSe2KaZQ85">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Operator">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
-        <rdfs:label xml:lang="en">Operators</rdfs:label>
+        <rdfs:label xml:lang="en">Operator</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RCdwDIy9ZQUXq2nO2AU8Nbj -->
+    <!-- http://deepomics.inrae.fr/BiosampleSequencingRawData -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RCdwDIy9ZQUXq2nO2AU8Nbj">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/BiosampleSequencingRawData">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">BiosampleSequencingRawData</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RD2zZxblOdtm9rug8MSF5SW -->
+    <!-- http://deepomics.inrae.fr/SequencingRun -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RD2zZxblOdtm9rug8MSF5SW">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/SequencingRun">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Voici la description</rdfs:comment>
         <rdfs:label xml:lang="en">SequencingRun</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RDiOpHJWqpm6LhZzk8jZiJu -->
+    <!-- http://deepomics.inrae.fr/BiosampleSequencingProcessedData -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RDiOpHJWqpm6LhZzk8jZiJu">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/BiosampleSequencingProcessedData">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">BiosampleSequencingProcessedData</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RDye55BBTTvSE3XSpskCyyO -->
+    <!-- http://deepomics.inrae.fr/SamplingSite -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RDye55BBTTvSE3XSpskCyyO">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/SamplingSite">
         <rdfs:comment xml:lang="en">It corresponds to the industrial site from which the samples originate (e.g: a wastewater treatment plant).</rdfs:comment>
         <rdfs:label xml:lang="en">SamplingSite</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RGqfVMSr7brs5umWLFqja9 -->
+    <!-- http://deepomics.inrae.fr/BiotechnologicalProcess -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RGqfVMSr7brs5umWLFqja9">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/BiotechnologicalProcess">
         <rdfs:comment xml:lang="en">It corresponds to the process and reactor from which the samples from the field originate. Indeed, a single industrial site can gather several processes (e.g. activated sludge, anaerobic digester) and the reactor from which the sample originates needs to be specified.</rdfs:comment>
         <rdfs:label xml:lang="en">BiotechnologicalProcess</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RHbmcqQacw0ZATMxnsbYBd -->
+    <!-- http://deepomics.inrae.fr/Input -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RHbmcqQacw0ZATMxnsbYBd">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Input">
         <rdfs:comment xml:lang="en">The inputs are the compounds and elements which will be used in the reactors (feeding, gas, inocula, buffers, matrix, pure microbial strain, …). They are described according to a controlled vocabulary and they are defined at the scale of the project.</rdfs:comment>
         <rdfs:label xml:lang="en">Input</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RJVWzyLN46xRFZUDi6vZPw -->
+    <!-- http://deepomics.inrae.fr/SamplingCampaign -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RJVWzyLN46xRFZUDi6vZPw">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/SamplingCampaign">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">SamplingCampaign</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RY0uXvXQWLncugFW7GQRq8 -->
+    <!-- http://deepomics.inrae.fr/Compartment -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RY0uXvXQWLncugFW7GQRq8">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Compartment">
         <rdfs:comment xml:lang="en">A physical compartment of a laboratory reactor. Typically, bioelectrochemical system reactors can have several compartments, such as the anodic compartment and the cathodic compartment.</rdfs:comment>
         <rdfs:label xml:lang="en">Compartment</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/Project -->
+    <!-- http://deepomics.inrae.fr/Project -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/Project">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Project">
+         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://opendata.inrae.fr/hasObserver"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://opendata.inrae.fr/hasCoordinator"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <skos:closeMatch>http://www.opensilex.org/vocabulary/oeso#Project</skos:closeMatch>
         <rdfs:label xml:lang="en">Project</rdfs:label>
@@ -288,47 +300,55 @@
 
 
 
-    <!-- http://opendata.inrae.fr/Rfb9ON3BGs2PyxVSO1xyQa -->
+    <!-- http://deepomics.inrae.fr/OperatingCondition -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/Rfb9ON3BGs2PyxVSO1xyQa">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/OperatingCondition">
         <rdfs:comment xml:lang="en">It describes the conditions and treatment applied to a given number of replicated reactors. Each reactor can be composed of 1 to 3 distinct compartments. A given operating condition can be defined at the level of the reactor (if it is identical for all compartments) or at the level of each compartment. In each operating condition, you will be able to define replicates.</rdfs:comment>
         <rdfs:label xml:lang="en">OperatingCondition</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/RqbmhyT5wQ7YNnTWhLhKd3 -->
+    <!-- http://deepomics.inrae.fr/Reactor -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/RqbmhyT5wQ7YNnTWhLhKd3">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/Reactor">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label xml:lang="en">Reactor</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/TaxonAnnotation -->
+    <!-- http://deepomics.inrae.fr/TaxonAnnotation -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/TaxonAnnotation">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/TaxonAnnotation">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label>TaxonAnnotation</rdfs:label>
     </owl:Class>
 
 
 
-    <!-- http://opendata.inrae.fr/TaxonCount -->
+    <!-- http://deepomics.inrae.fr/TaxonCount -->
 
-    <owl:Class rdf:about="http://opendata.inrae.fr/TaxonCount">
+    <owl:Class rdf:about="http://deepomics.inrae.fr/TaxonCount">
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a</rdfs:comment>
         <rdfs:label>TaxonCount</rdfs:label>
     </owl:Class>
 
 
-    <owl:ObjectProperty rdf:about="http://opendata.inrae.fr/hasCoordinator">
+    <owl:ObjectProperty rdf:about="http://deepomics.inrae.fr/hasCoordinator">
         <owl:inverseOf rdf:resource="http://opendata.inra.fr/PO2/isCoordinatedBy"/>
-        <rdfs:domain rdf:resource="http://opendata.inrae.fr/Project"/>
+        <rdfs:domain rdf:resource="http://deepomics.inrae.fr/Project"/>
         <rdfs:range rdf:resource="foaf:Agent"/>
         <rdfs:label xml:lang="en">Has Coordinator</rdfs:label>
         <rdfs:comment xml:lang="en">Link to express that a project is coordinated by an agent</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://opendata.inrae.fr/hasObserver">
+        <owl:inverseOf rdf:resource="http://opendata.inra.fr/PO2/isObservedBy"/>
+        <rdfs:domain rdf:resource="http://opendata.inrae.fr/Project"/>
+        <rdfs:range rdf:resource="foaf:Agent"/>
+        <rdfs:label xml:lang="en">Has Observer</rdfs:label>
+        <rdfs:comment xml:lang="en">Link to express that a project is observed by an agent</rdfs:comment>
     </owl:ObjectProperty>
 </rdf:RDF>
 
