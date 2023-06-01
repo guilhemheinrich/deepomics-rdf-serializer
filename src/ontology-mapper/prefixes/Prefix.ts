@@ -89,6 +89,7 @@ export class Prefixer {
             let sub_uri = _match!.groups!.protocol + _match!.groups!.path +_match!.groups!.separator
             let propositions = _match!.groups!.path.split(/[^\w\d]/)  
             let prefix = this.buildPrefixFromProposition(propositions)
+            console.log('Found a new possible prefix ! ' + prefix)
             let new_prefix_uri = {
                 uri: sub_uri,
                 prefix: prefix

@@ -3,10 +3,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://opendata.inrae.fr/Weirdo>
+<http://deepomics.inrae.fr/Weirdo>
   a owl:Class .
 
-<http://opendata.inrae.fr/hasName>
+<http://deepomics.inrae.fr/hasName>
   a owl:DatatypeProperty ;
   owl:allValuesFrom xsd:string ;
-  rdfs:domain <http://opendata.inrae.fr/Weirdo> .
+  rdfs:domain <http://deepomics.inrae.fr/Weirdo> .

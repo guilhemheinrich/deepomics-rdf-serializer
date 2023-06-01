@@ -32,7 +32,7 @@
         "prefix": "oeev"
     },
     {
-        "uri": "http://opendata.inrae.fr/",
+        "uri": "http://deepomics.inrae.fr/",
         "prefix": "deepomics"
     }
 ]

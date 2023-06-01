@@ -9,8 +9,8 @@ export interface Gql_Resource {
     // RDF layer
     isAbstract: boolean         // In case of a blank node
     class: string
-    properties: string[]        // Liste des propriétés
-    inherits: string[]          // gestion de la chaine d'héritage, non géré de base dans graphQL
+    properties: Array<keyof Gql_Resource_Dictionary>        // Liste des propriétés
+    inherits: Array<keyof Gql_Resource_Dictionary>          // gestion de la chaine d'héritage, non géré de base dans graphQL
 
     // Properties specific
     type: string,
@@ -18,6 +18,7 @@ export interface Gql_Resource {
     // OWL restriction layer
     isRequired: boolean
     isList: boolean
+    property_uri?: string
 
 }
 export interface _Porperty_Template {
@@ -172,14 +173,14 @@ export class Gql_Generator {
 
     }
 
-    getInheritedValues(uri: string, key: "properties"): Array<string[]>
-    getInheritedValues(uri: string, key: "inherits"): Array<string[]>
-    getInheritedValues(uri: string, key: "type"): Array<string>
-    getInheritedValues(uri: string, key: "class"): Array<string>
-    getInheritedValues(uri: string, key: keyof Gql_Resource): Array<Gql_Resource[typeof key]> {
+    getInheritedValues(uri: keyof Gql_Resource_Dictionary, key: "properties"): Array<Array<keyof Gql_Resource_Dictionary>>
+    getInheritedValues(uri: keyof Gql_Resource_Dictionary, key: "inherits"): Array<Array<keyof Gql_Resource_Dictionary>>
+    getInheritedValues(uri: keyof Gql_Resource_Dictionary, key: "type"): Array<string>
+    getInheritedValues(uri: keyof Gql_Resource_Dictionary, key: "class"): Array<string>
+    getInheritedValues(uri: keyof Gql_Resource_Dictionary, key: keyof Gql_Resource): Array<Gql_Resource[typeof key]> {
         let inherited_values: Array<Gql_Resource[typeof key]> = []
 
-        const looper = (uri: string) => {
+        const looper = (uri: keyof Gql_Resource_Dictionary) => {
             const inheritance = this.gql_resources_preprocesing[uri].inherits
             inherited_values.push(this.gql_resources_preprocesing[uri][key])
             inheritance.forEach((uri_next) => looper(uri_next))
@@ -187,6 +188,18 @@ export class Gql_Generator {
 
         looper(uri)
         return inherited_values
+    }
+
+    getRestrictions(uri: keyof Gql_Resource_Dictionary) {
+        const inheritance_chain = this.getInheritedValues(uri, "inherits")
+        return inheritance_chain
+            .reduce((accumulator, current_value) => {
+                return [...accumulator, ...current_value]
+            }, [])
+            .map((uri) => this.gql_resources_preprocesing[uri])
+            .filter((value) => {
+                return value.class === this.expender('owl:Restriction')
+            })
     }
 
     isAnnotationProperty(resource: Gql_Resource) {
@@ -211,6 +224,7 @@ export class Gql_Generator {
         let predicate = quad.predicate.value
         let object = quad.object.value
         this.gql_resources_preprocesing[subject].isAbstract = blank_node
+        let cardinality = 0
         switch (this.prefixer(predicate)) {
             //            _  __         __      _  __ 
             //           | |/ _|       / /     | |/ _|
@@ -227,9 +241,12 @@ export class Gql_Generator {
                     case "owl:Class":
                     case "rdfs:Class":
                         this.gql_resources_preprocesing[subject].isConcept = true
+                        this.gql_resources_preprocesing[subject].inherits.push(this.expender('owl:Thing'))
                         break
                     case "owl:ObjectProperty":
                     case "owl:DatatypeProperty":
+                        this.gql_resources_preprocesing[subject].domains.push(this.expender('owl:Thing'))
+                        this.gql_resources_preprocesing[this.expender('owl:Thing')].properties.push(subject)
                         break
                     case "owl:Restriction":
                         break
@@ -256,6 +273,7 @@ export class Gql_Generator {
                 this.gql_resources_preprocesing[subject].type = object
                 break
             case "rdfs:domain":
+                // It's here that we know which properties are on which class
                 this.gql_resources_preprocesing[object].properties.push(subject)
                 this.gql_resources_preprocesing[subject].domains.push(object)
                 break
@@ -274,13 +292,14 @@ export class Gql_Generator {
             //                    
             // 
             case "owl:onProperty":
+                this.gql_resources_preprocesing[subject].property_uri = object
                 break
             case "owl:someValuesFrom":
                 console.log(`${subject} ${predicate} ${object}`)
                 break
             case "owl:minQualifiedCardinality":
             case "owl:minCardinality":
-                let cardinality = Number(object)
+                cardinality = Number(object)
                 if (cardinality >= 1) {
                     this.gql_resources_preprocesing[subject].isRequired = true
                 }
@@ -319,9 +338,7 @@ export class Gql_Generator {
         // Iterate over all concept
         let concepts = Object.values(this.gql_resources_preprocesing).filter(resource => resource.isConcept && !resource.isAbstract)
         // Separate the owl:restriction
-        let restrictions = Object.values(this.gql_resources_preprocesing).filter(resource => resource.isAbstract)
-        console.log(this.gql_resources_preprocesing)
-        console.log(this.prefix_handler.prefix_array)
+        // let restrictions = Object.values(this.gql_resources_preprocesing).filter(resource => resource.isAbstract)
         // Helper function to parse the properties into correct gql
         const property_templater = (property: PorpertyTemplate) => {
             let out_string = this.shortener(property.name) + ': '
@@ -442,16 +459,16 @@ export class Gql_Generator {
                 }
             }
             let set_inherits: Set<string> = new Set()
-            let set_restrictions_uri: string[] = restrictions.map((restriction) => restriction.class_uri)
+            // let set_restrictions_uri: string[] = restrictions.map((restriction) => restriction.class_uri)
 
-            for (let inheritance_mail of this.getInheritedValues(concept.class_uri, "inherits")) {
-                inheritance_mail.forEach((parent_uri) => {
-                    // Only write non - owl:Restriction inheritance
-                    if (!set_restrictions_uri.includes(parent_uri)) {
-                        set_inherits.add(this.shortener(parent_uri))
-                    }
-                })
-            }
+            // for (let inheritance_mail of this.getInheritedValues(concept.class_uri, "inherits")) {
+            //     inheritance_mail.forEach((parent_uri) => {
+            //         // Only write non - owl:Restriction inheritance
+            //         if (!set_restrictions_uri.includes(parent_uri)) {
+            //             set_inherits.add(this.shortener(parent_uri))
+            //         }
+            //     })
+            // }
             // Iterate over set_restrictions_uri to update properties
             //    _            _       
             //   | |          | |      
