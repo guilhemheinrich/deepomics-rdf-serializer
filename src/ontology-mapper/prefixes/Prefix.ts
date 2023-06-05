@@ -108,20 +108,6 @@ export class Prefixer {
 
     buildPrefixFromProposition(propositions: ReadonlyArray<string>): string {
         return propositions.map((prop) => prop.toLowerCase()).filter((prop_low) => !this.uninteresting_string.includes(prop_low)).join('_')
-        let number_memory: string[] = []
-        // slice is used to copy the array first, as the reverse() method mutate the intial array too
-        for (let proposition of propositions.slice().reverse()) {
-            if (!proposition ) continue // Skip if it's empty
-            if (this.uninteresting_string.includes(proposition)) continue // Skip If uninformative
-            if (proposition.match(/\d*/)) {
-                number_memory.push(<string>proposition)
-                continue
-            }
-            return proposition.toLowerCase() + number_memory.join('_') // return the more righ fragment otherwise, followed by the "numbers" founded
-        }
-        let undefined_index = 'undefined_ns_' + this.undefined_cpt
-        this.undefined_cpt++
-        return undefined_index
     }
 
     // TODO

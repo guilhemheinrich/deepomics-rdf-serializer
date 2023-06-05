@@ -1,0 +1,1378 @@
+Prefixes:
+  - key: owl
+    value: http://www.w3.org/2002/07/owl#
+  - key: rdfs
+    value: http://www.w3.org/2000/01/rdf-schema#
+  - key: ns
+    value: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  - key: skos
+    value: http://www.w3.org/2004/02/skos/core#
+  - key: foaf
+    value: http://xmlns.com/foaf/0.1/
+  - key: xsd
+    value: http://www.w3.org/2001/XMLSchema#
+  - key: oeso
+    value: http://www.opensilex.org/vocabulary/oeso#
+  - key: oeev
+    value: http://www.opensilex.org/vocabulary/oeev#
+  - key: deepomics
+    value: http://deepomics.inrae.fr/
+  - key: rdf
+    value: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  - key: dcam
+    value: http://purl.org/dc/dcam/
+  - key: dcterms
+    value: http://purl.org/dc/terms/
+  - key: opendata_inra_fr_po2
+    value: http://opendata.inra.fr/PO2/
+Specific:
+  - key: Thing
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://www.w3.org/2002/07/owl#Thing
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Agent
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Agent
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: AgentClass
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/AgentClass
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: BibliographicResource
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/BibliographicResource
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: FileFormat
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/FileFormat
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Frequency
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Frequency
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Jurisdiction
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Jurisdiction
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: LicenseDocument
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/LicenseDocument
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: LinguisticSystem
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/LinguisticSystem
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Location
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Location
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: LocationPeriodOrJurisdiction
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/LocationPeriodOrJurisdiction
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MediaType
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/MediaType
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MediaTypeOrExtent
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/MediaTypeOrExtent
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MethodOfAccrual
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/MethodOfAccrual
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MethodOfInstruction
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/MethodOfInstruction
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: PeriodOfTime
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/PeriodOfTime
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: PhysicalMedium
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/PhysicalMedium
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: PhysicalResource
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/PhysicalResource
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Policy
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Policy
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: ProvenanceStatement
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/ProvenanceStatement
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: RightsStatement
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/RightsStatement
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: SizeOrDuration
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/SizeOrDuration
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Standard
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://purl.org/dc/terms/Standard
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Project
+    data_properties:
+      - php_property: endDate
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDate
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Project
+        rdf_property: rdf:Class
+      - php_property: coordinator
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: foaf:Agent
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: foaf:Agent
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: BioinformaticWorkflow
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/BioinformaticWorkflow
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Biosample
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Biosample
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: BiosampleSequencingProcessedData
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiosampleSequencingProcessedData
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: BiosampleSequencingRawData
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiosampleSequencingRawData
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: BiotechnologicalProcess
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/BiotechnologicalProcess
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Compartment
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Compartment
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Coordinator
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Coordinator
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: ExperimentalSeries
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/ExperimentalSeries
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: ExtractionAndSequencingProcedures
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/ExtractionAndSequencingProcedures
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: FieldOrFullScaleProcess
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/FieldOrFullScaleProcess
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Input
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Input
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: LaboratoryReactor
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/LaboratoryReactor
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MetabarcodingRun
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/MetabarcodingRun
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MonitoredParameter
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/MonitoredParameter
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: MonitoredParametersValues
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/MonitoredParametersValues
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Observer
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Observer
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: OperatingCondition
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/OperatingCondition
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Operator
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Operator
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: PCRconditions
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/PCRconditions
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Participants
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Participants
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: ProcessCategory
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/ProcessCategory
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: ProjectStatus
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/ProjectStatus
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Reactor
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Reactor
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Replicate
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Replicate
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: SamplingCampaign
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/SamplingCampaign
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: SamplingSite
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/SamplingSite
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: SequencingRun
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/SequencingRun
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: SequencingSample
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/SequencingSample
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: TaxonAnnotation
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/TaxonAnnotation
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: TaxonCount
+    data_properties:
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/TaxonCount
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy
+  - key: Weirdo
+    data_properties:
+      - php_property: names
+        rdf_property: deepomics:hasName
+      - php_property: endDates
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDates
+        rdf_property: deepomics:ontology#startDate
+      - php_property: names
+        rdf_property: deepomics:hasName
+    object_properties:
+      - value: http://deepomics.inrae.fr/Weirdo
+        rdf_property: rdf:Class
+      - php_property: coordinators
+        rdf_property: deepomics:hasCoordinator
+      - php_property: observers
+        rdf_property: deepomics:hasObserver
+      - php_property: participants
+        rdf_property: deepomics:hasParticipant
+      - php_property: experimentalSeries
+        rdf_property: deepomics:ontology#hasExperimentalSerie
+      - php_property: samples
+        rdf_property: deepomics:ontology#hasSample
+      - php_property: isCoordinatedBys
+        rdf_property: opendata_inra_fr_po2:isCoordinatedBy

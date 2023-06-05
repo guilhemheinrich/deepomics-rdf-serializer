@@ -25,17 +25,17 @@ export default class RDFserializer_service {
     private constructor() {
     }
 
-    static async getInstance() {
+    static async getInstance(ontologies_folder_key? : string) {
         if (!this.instance) {
             this.instance = new RDFserializer_service()
-            await this.instance.initializePrefixes()
-            await this.instance.initializeOntologie()
+            await this.instance.initializePrefixes(ontologies_folder_key)
+            await this.instance.initializeOntologie(ontologies_folder_key)
         }
         return this.instance
     }
 
-    private async initializePrefixes() {
-        const ontologie_folder_path = <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
+    private async initializePrefixes(ontologies_folder_key? : string) {
+        const ontologie_folder_path = ontologies_folder_key || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
         const prefixParse: Promise<unknown>[] = []
         for (const filename of walker_recursive_sync(ontologie_folder_path)) {
             let contentType = ''
@@ -80,8 +80,8 @@ export default class RDFserializer_service {
         .catch((err) => console.log(err))
     }
 
-    private async initializeOntologie() {
-        const ontologie_folder_path = <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
+    private async initializeOntologie(ontologies_folder_key? : string) {
+        const ontologie_folder_path = ontologies_folder_key || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
         // const prefixParse: Promise<unknown>[] = []
         const allParse: Promise<unknown>[] = []
         for (const filename of walker_recursive_sync(ontologie_folder_path)) {
@@ -117,10 +117,11 @@ export default class RDFserializer_service {
             .catch((err) => console.log(err))
     }
 
-    writeMappings() {
+    writeMappings(output_path?: string) {
         const mappings = this.mapping_templater()
         const prefixes = this.prefixes_templater()
-        fs.writeFileSync(<string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY], yaml.dump({ Prefixes: prefixes, Specific: mappings }), { encoding: "utf-8" })
+        
+        fs.writeFileSync(output_path || <string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY], yaml.dump({ Prefixes: prefixes, Specific: mappings }), { encoding: "utf-8" })
     }
 
     shortener(uri: string) {
