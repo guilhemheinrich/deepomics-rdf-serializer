@@ -1,5 +1,7 @@
 rdf_parsed.json
 
+# grunt ?
+.tscache
 # Logs
 logs
 *.log

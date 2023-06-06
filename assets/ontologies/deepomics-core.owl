@@ -135,6 +135,7 @@
 
     <owl:DatatypeProperty rdf:about="http://deepomics.inrae.fr/ontology#endDate">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:domain rdf:resource="http://deepomics.inrae.fr/Project"/>
     </owl:DatatypeProperty>
     
 
@@ -143,6 +144,7 @@
 
     <owl:DatatypeProperty rdf:about="http://deepomics.inrae.fr/ontology#startDate">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:domain rdf:resource="http://deepomics.inrae.fr/Project"/>
     </owl:DatatypeProperty>
     
 

@@ -9,8 +9,8 @@ let juip = {
         fs.writeFileSync('rdf_parsed.json', JSON.stringify(rdf_service.RDF_handler.gql_resources_preprocesing, undefined, 2))
         const mappings = rdf_service.mapping_templater()
         rdf_service.writeMappings()
-        console.log("mappings")
-        console.log(mappings)
+        // console.log("mappings")
+        // console.log(mappings)
     }
 }
 

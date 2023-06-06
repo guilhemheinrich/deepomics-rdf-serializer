@@ -6,8 +6,8 @@
   "scripts": {
     "test-mapping": "ts-node ./mapping-generation.ts",
     "test-serialization": "ts-node ./rdf-generation.ts",
-    "build": "grunt",
-    "test": "node out/mapping-generation.js"
+    "test": "node out/mapping-generation.js",
+    "build": "grunt"
   },
   "keywords": [
     "rdf",

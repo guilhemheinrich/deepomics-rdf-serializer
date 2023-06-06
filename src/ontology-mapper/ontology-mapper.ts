@@ -25,32 +25,34 @@ export default class RDFserializer_service {
     private constructor() {
     }
 
-    static async getInstance(ontologies_folder_key? : string) {
+    static async getInstance(ontologies_source_path? : string) {
         if (!this.instance) {
             this.instance = new RDFserializer_service()
-            await this.instance.initializePrefixes(ontologies_folder_key)
-            await this.instance.initializeOntologie(ontologies_folder_key)
+            await this.instance.initializePrefixes(ontologies_source_path)
+            await this.instance.initializeOntologie(ontologies_source_path)
         }
         return this.instance
     }
 
-    private async initializePrefixes(ontologies_folder_key? : string) {
-        const ontologie_folder_path = ontologies_folder_key || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
-        const prefixParse: Promise<unknown>[] = []
-        for (const filename of walker_recursive_sync(ontologie_folder_path)) {
-            let contentType = ''
-            switch (path.extname(filename)) {
-                case '.ttl':
-                    contentType = 'text/turtle'
-                    break;
-                case '.owl':
-                case '.rdf':
-                    contentType = 'application/rdf+xml'
-                    break;
-                default:
-                    continue
+    private guessContentType(filename: string) {
+        let contentType = ''
+        switch (path.extname(filename)) {
+            case '.ttl':
+                contentType = 'text/turtle'
+                break;
+            case '.owl':
+            case '.rdf':
+                contentType = 'application/rdf+xml'
+                break;
+        }
+        return contentType
+    }
 
-            }
+    private async initializePrefixes(ontologies_source_path? : string) {
+        const ontologies_path = ontologies_source_path || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
+        const prefixParse: Promise<unknown>[] = []
+        for (const filename of walker_recursive_sync(ontologies_path)) {
+            const contentType = this.guessContentType(filename)
             const prefixStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
                 .on('prefix', (prefix: string, iri: NamedNode) => {
                     console.log('Read prefix ' + prefix)
@@ -69,36 +71,17 @@ export default class RDFserializer_service {
 
         return Promise.all(prefixParse)
         .then((values) => {
-            console.log(values)
-            // return Promise.all(allParse)
-            //     .then((values) => {
-
-            //     })
-            //     .catch((err) => console.log(err))
             console.log(this.RDF_handler.prefix_handler.prefix_array)
         })
         .catch((err) => console.log(err))
     }
 
-    private async initializeOntologie(ontologies_folder_key? : string) {
-        const ontologie_folder_path = ontologies_folder_key || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
+    private async initializeOntologie(ontologies_source_path? : string) {
+        const ontologies_path = ontologies_source_path || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
         // const prefixParse: Promise<unknown>[] = []
         const allParse: Promise<unknown>[] = []
-        for (const filename of walker_recursive_sync(ontologie_folder_path)) {
-            let contentType = ''
-            switch (path.extname(filename)) {
-                case '.ttl':
-                    contentType = 'text/turtle'
-                    break;
-                case '.owl':
-                case '.rdf':
-                    contentType = 'application/rdf+xml'
-                    break;
-                default:
-                    continue
-
-            }
-
+        for (const filename of walker_recursive_sync(ontologies_path)) {
+            const contentType = this.guessContentType(filename)
             const parseStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
                 .on('data', (quad: Quad) => {
                     this.RDF_handler.processRdf(quad)
@@ -188,16 +171,17 @@ export default class RDFserializer_service {
                     property.isList = relevant_restriction.isList
                     property.isRequired = relevant_restriction.isRequired
                     console.log('Found restriction on property ' + property.name + ' on class ' + concept.name)
+                    console.log(property)
                 }
                 if (this.RDF_handler.isDatatypeProperty(property)) {
-                    console.log(property_uri + " is a datatype property" + (property.isList ? ' and a list' : ''));
+                    // console.log(property_uri + " is a datatype property" + (property.isList ? ' and a list' : ''));
 
                     (<Erasable_Property_Mapping_constructor[]>entry.data_properties).push(<Erasable_Property_Mapping_constructor>{
                         php_property: this.shortener_property(property.class_uri) + (property.isList ? 's' : ''),
                         rdf_property: this.RDF_handler.prefixer(property.class_uri)
                     })
                 } else {
-                    console.log(property_uri + " is an object property" + (property.isList ? ' and a list' : ''));
+                    // console.log(property_uri + " is an object property" + (property.isList ? ' and a list' : ''));
                     (<Erasable_Property_Mapping_constructor[]>entry.object_properties).push(<Erasable_Property_Mapping_constructor>{
                         php_property: this.shortener_property(property.class_uri) + (property.isList ? 's' : ''),
                         rdf_property: this.RDF_handler.prefixer(property.class_uri)

@@ -241,6 +241,8 @@ export class Gql_Generator {
                     case "owl:Class":
                     case "rdfs:Class":
                         this.gql_resources_preprocesing[subject].isConcept = true
+                        // TODO nop, pas de domaine de base sur owl:Thing, tyéfououkoi
+                        // de plus, rdfs:domain se combine en union: https://perso.liris.cnrs.fr/pierre-antoine.champin/2001/rdf-tutorial/node15.html
                         this.gql_resources_preprocesing[subject].inherits.push(this.expender('owl:Thing'))
                         break
                     case "owl:ObjectProperty":
