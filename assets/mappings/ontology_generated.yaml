@@ -17,12 +17,6 @@ Prefixes:
     value: http://www.opensilex.org/vocabulary/oeev#
   - key: deepomics
     value: http://deepomics.inrae.fr/
-  - key: rdf
-    value: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  - key: dcam
-    value: http://purl.org/dc/dcam/
-  - key: dcterms
-    value: http://purl.org/dc/terms/
 Specific:
   - key: Thing
     data_properties: []
@@ -48,6 +42,15 @@ Specific:
         rdf_property: deepomics:ontology#hasExperimentalSerie
       - php_property: samples
         rdf_property: deepomics:ontology#hasSample
+  - key: TemporalEntity
+    data_properties:
+      - php_property: endDate
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDate
+        rdf_property: deepomics:ontology#startDate
+    object_properties:
+      - value: http://deepomics.inrae.fr/TemporalEntity
+        rdf_property: rdf:Class
   - key: foaf:Agent
     data_properties: []
     object_properties:
@@ -89,7 +92,11 @@ Specific:
       - value: http://deepomics.inrae.fr/Coordinator
         rdf_property: rdf:Class
   - key: ExperimentalSeries
-    data_properties: []
+    data_properties:
+      - php_property: endDate
+        rdf_property: deepomics:ontology#endDate
+      - php_property: startDate
+        rdf_property: deepomics:ontology#startDate
     object_properties:
       - value: http://deepomics.inrae.fr/ExperimentalSeries
         rdf_property: rdf:Class
@@ -202,121 +209,4 @@ Specific:
     data_properties: []
     object_properties:
       - value: http://deepomics.inrae.fr/TaxonCount
-        rdf_property: rdf:Class
-  - key: Agent
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Agent
-        rdf_property: rdf:Class
-  - key: AgentClass
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/AgentClass
-        rdf_property: rdf:Class
-  - key: BibliographicResource
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/BibliographicResource
-        rdf_property: rdf:Class
-  - key: FileFormat
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/FileFormat
-        rdf_property: rdf:Class
-  - key: Frequency
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Frequency
-        rdf_property: rdf:Class
-  - key: Jurisdiction
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Jurisdiction
-        rdf_property: rdf:Class
-  - key: LicenseDocument
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/LicenseDocument
-        rdf_property: rdf:Class
-  - key: LinguisticSystem
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/LinguisticSystem
-        rdf_property: rdf:Class
-  - key: Location
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Location
-        rdf_property: rdf:Class
-  - key: LocationPeriodOrJurisdiction
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/LocationPeriodOrJurisdiction
-        rdf_property: rdf:Class
-  - key: MediaType
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/MediaType
-        rdf_property: rdf:Class
-  - key: MediaTypeOrExtent
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/MediaTypeOrExtent
-        rdf_property: rdf:Class
-  - key: MethodOfAccrual
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/MethodOfAccrual
-        rdf_property: rdf:Class
-  - key: MethodOfInstruction
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/MethodOfInstruction
-        rdf_property: rdf:Class
-  - key: PeriodOfTime
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/PeriodOfTime
-        rdf_property: rdf:Class
-  - key: PhysicalMedium
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/PhysicalMedium
-        rdf_property: rdf:Class
-  - key: PhysicalResource
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/PhysicalResource
-        rdf_property: rdf:Class
-  - key: Policy
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Policy
-        rdf_property: rdf:Class
-  - key: ProvenanceStatement
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/ProvenanceStatement
-        rdf_property: rdf:Class
-  - key: RightsStatement
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/RightsStatement
-        rdf_property: rdf:Class
-  - key: SizeOrDuration
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/SizeOrDuration
-        rdf_property: rdf:Class
-  - key: Standard
-    data_properties: []
-    object_properties:
-      - value: http://purl.org/dc/terms/Standard
-        rdf_property: rdf:Class
-  - key: Weirdo
-    data_properties:
-      - php_property: names
-        rdf_property: deepomics:hasName
-    object_properties:
-      - value: http://deepomics.inrae.fr/Weirdo
         rdf_property: rdf:Class

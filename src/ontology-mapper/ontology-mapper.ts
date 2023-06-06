@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import rdfParser from "rdf-parse"
 import { Quad } from "rdf-js"
-import fs from 'fs-extra'
+import fs, { PathLike } from 'fs-extra'
 import path from 'path'
 import yaml from 'js-yaml'
 import { walker_recursive_sync } from '../Helper/walker'
@@ -25,7 +25,7 @@ export default class RDFserializer_service {
     private constructor() {
     }
 
-    static async getInstance(ontologies_source_path? : string) {
+    static async getInstance(ontologies_source_path?: string) {
         if (!this.instance) {
             this.instance = new RDFserializer_service()
             await this.instance.initializePrefixes(ontologies_source_path)
@@ -48,12 +48,38 @@ export default class RDFserializer_service {
         return contentType
     }
 
-    private async initializePrefixes(ontologies_source_path? : string) {
+    private async initializePrefixes(ontologies_source_path?: string) {
         const ontologies_path = ontologies_source_path || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
         const prefixParse: Promise<unknown>[] = []
-        for (const filename of walker_recursive_sync(ontologies_path)) {
+
+        if (fs.lstatSync(ontologies_path).isDirectory()) {
+            for (const filename of walker_recursive_sync(ontologies_path)) {
+                const contentType = this.guessContentType(filename)
+                const prefixStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
+                    .on('prefix', (prefix: string, iri: NamedNode) => {
+                        console.log('Read prefix ' + prefix)
+                        this.RDF_handler.prefix_handler.prefix_array.push({
+                            uri: iri.id,
+                            prefix: prefix
+                        })
+                    })
+                    .on('data', () => { })
+                    .on('error', (error) => console.error(error))
+                    .on('end', () => {
+                        console.log('finished reading prefixes from ' + filename)
+                    });
+                prefixParse.push(stream.finished(prefixStream))
+            }
+
+            return Promise.all(prefixParse)
+                .then((values) => {
+                    console.log(this.RDF_handler.prefix_handler.prefix_array)
+                })
+                .catch((err) => console.log(err))
+        } else {
+            const filename = ontologies_path
             const contentType = this.guessContentType(filename)
-            const prefixStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
+            return rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
                 .on('prefix', (prefix: string, iri: NamedNode) => {
                     console.log('Read prefix ' + prefix)
                     this.RDF_handler.prefix_handler.prefix_array.push({
@@ -66,21 +92,35 @@ export default class RDFserializer_service {
                 .on('end', () => {
                     console.log('finished reading prefixes from ' + filename)
                 });
-            prefixParse.push(stream.finished(prefixStream))
         }
 
-        return Promise.all(prefixParse)
-        .then((values) => {
-            console.log(this.RDF_handler.prefix_handler.prefix_array)
-        })
-        .catch((err) => console.log(err))
     }
 
-    private async initializeOntologie(ontologies_source_path? : string) {
+    private async initializeOntologie(ontologies_source_path?: string) {
         const ontologies_path = ontologies_source_path || <string>process.env[RDFserializer_service.ONTOLOGIES_FOLDER_KEY]
         // const prefixParse: Promise<unknown>[] = []
         const allParse: Promise<unknown>[] = []
-        for (const filename of walker_recursive_sync(ontologies_path)) {
+        if (fs.lstatSync(ontologies_path).isDirectory()) {
+            for (const filename of walker_recursive_sync(ontologies_path)) {
+                const contentType = this.guessContentType(filename)
+                const parseStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
+                    .on('data', (quad: Quad) => {
+                        this.RDF_handler.processRdf(quad)
+                    })
+                    .on('error', (error) => console.error(error))
+                    .on('end', () => {
+                        console.log('finished reading quad from ' + filename)
+
+                    });
+                allParse.push(stream.finished(parseStream))
+            }
+            return Promise.all(allParse)
+                .then((values) => {
+
+                })
+                .catch((err) => console.log(err))
+        } else {
+            const filename = ontologies_path
             const contentType = this.guessContentType(filename)
             const parseStream = rdfParser.parse(fs.createReadStream(filename), { contentType: contentType })
                 .on('data', (quad: Quad) => {
@@ -92,18 +132,20 @@ export default class RDFserializer_service {
 
                 });
             allParse.push(stream.finished(parseStream))
-        }
-        return Promise.all(allParse)
-            .then((values) => {
+            return Promise.all(allParse)
+                .then((values) => {
 
-            })
-            .catch((err) => console.log(err))
+                })
+                .catch((err) => console.log(err))
+        }
+
+
     }
 
     writeMappings(output_path?: string) {
         const mappings = this.mapping_templater()
         const prefixes = this.prefixes_templater()
-        
+
         fs.writeFileSync(output_path || <string>process.env[RDFserializer_service.GENERATED_MAPPINGS_KEY], yaml.dump({ Prefixes: prefixes, Specific: mappings }), { encoding: "utf-8" })
     }
 
@@ -138,7 +180,7 @@ export default class RDFserializer_service {
         const mappings: Optional_Class_Mapping_constructorI[] = []
         // Iterate over all concept
         let concepts = Object.values(this.RDF_handler.gql_resources_preprocesing).filter(resource => resource.isConcept && !resource.isAbstract)
-        
+
         for (let concept of concepts) {
             let entry: Class_Mapping_constructorI = {
                 key: this.shortener(concept.class_uri),
@@ -156,7 +198,7 @@ export default class RDFserializer_service {
                     return [...acculmulator, ...value]
                 }, [])
             for (let property_uri of all_properties) {
-                
+
                 // * Deep copy property then walk through restrictions to update
                 const property: typeof this.RDF_handler.gql_resources_preprocesing[typeof property_uri] = JSON.parse(JSON.stringify(this.RDF_handler.gql_resources_preprocesing[property_uri]))
                 // Skip the property if it is an annotation property
@@ -170,8 +212,8 @@ export default class RDFserializer_service {
                     // * It means that no output will be generated if we got two contrary rules 
                     property.isList = relevant_restriction.isList
                     property.isRequired = relevant_restriction.isRequired
-                    console.log('Found restriction on property ' + property.name + ' on class ' + concept.name)
-                    console.log(property)
+                    // console.log('Found restriction on property ' + property.name + ' on class ' + concept.name)
+                    // console.log(property)
                 }
                 if (this.RDF_handler.isDatatypeProperty(property)) {
                     // console.log(property_uri + " is a datatype property" + (property.isList ? ' and a list' : ''));
@@ -190,6 +232,8 @@ export default class RDFserializer_service {
 
             }
             entry.object_properties = array_unifier(<Erasable_Property_Mapping_constructor[]>entry.object_properties)
+            entry.data_properties = array_unifier(<Erasable_Property_Mapping_constructor[]>entry.data_properties)
+
             mappings.push(entry)
         }
         return mappings
